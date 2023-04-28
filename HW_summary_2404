@@ -1,0 +1,45 @@
+(1) вывести название товаров из 2 и 5 категории с ценой от 5 до 25 (EURO), где в названии есть слово syrup
+
+SELECT * 
+FROM Products
+	WHERE (CategoryID = 2 OR CategoryID = 5) 
+	AND Price BETWEEN 5 AND 25 
+	AND ProductName LIKE '%syrup%';
+
+(2) добавьте произвольный товар в таблицу Products
+
+	INSERT INTO Products (
+		ProductName, 
+		SupplierID, 
+		CategoryID, 
+		Unit, 
+		Price)
+	VALUES 
+		('Baumkuchen', 555, 55, '1 kg', 5);
+
+(3) у клиента с ID 1 измените адрес на произвольный
+
+UPDATE Customers 
+ 	SET Address = 'Blumenstr. 55'
+ 	WHERE CustomerID = 1
+	
+4) у всех клиентов не из Гермарнии и не из США очистите адрес и контактное имя
+
+UPDATE
+	Customers
+SET Address = '',
+	ContactName = ''
+WHERE Country <> 'Germany' 
+    AND Country <> 'USA'
+    
+(5) у всех поставщиков (Suppliers) очистите номер телефона
+
+UPDATE 
+	Suppliers
+SET Phone = ''
+
+(6) удалите всех поставщиков не из USA
+
+DELETE
+FROM Suppliers
+WHERE Country <> 'USA'
