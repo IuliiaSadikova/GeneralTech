@@ -1,0 +1,40 @@
+1. Вывести страны поставщиков
+
+	SELECT Country 
+	FROM Suppliers
+	GROUP BY Country;
+	
+2. Вывести имена и страны клиентов не из USA и China
+	
+	SELECT 
+	CustomerName,
+    Country
+	FROM Customers
+	WHERE Country NOT IN('USA', 'China');
+
+3. Вывести три самых дешевых товара в категории Beverages
+
+	SELECT * 
+	FROM Products
+	WHERE CategoryID = 1
+	ORDER BY Price
+	LIMIT 3;
+	
+4. Добавить нового поставщика из China (с произвольными данными)
+
+	INSERT INTO Suppliers
+	(SupplierName, ContactName, Address, City, PostalCode, Country, 			Phone)
+	VALUES ('Alibaba', 'Mao Bao', '121 Khaoni 4', 'Shanghai', 'SH458lk', 'China', '(6546)12555')
+	
+5. Для всех товаров из категорий 1 и 3 увеличить стоимость на 25.5%
+
+	SELECT *,
+	price * 1.255 AS NewPrice
+	FROM Products
+	WHERE CategoryID IN(1, 3);
+	
+6. Удалить всех поставщиков не из Spain и не из Japan
+
+	DELETE
+	FROM Suppliers
+	WHERE Country NOT IN('Spain', 'Japan');
