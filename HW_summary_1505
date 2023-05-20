@@ -1,0 +1,22 @@
+1. Задача. Вывести стоимость и название двух самых дешевых товаров из Germany
+
+SELECT
+	Products.ProductName,
+    Products.Price,
+    Suppliers.Country    
+FROM Products
+JOIN Suppliers ON Products.SupplierID=Suppliers.SupplierID
+WHERE Country = "Germany"
+ORDER BY Price
+LIMIT 2
+
+2. Задача. Вывести список стран, которые поставляют морепродукты
+
+SELECT
+    Suppliers.Country,
+    Categories.CategoryName
+FROM [Products]
+JOIN Categories ON Products.CategoryID=Categories.CategoryID
+JOIN Suppliers ON Products.SupplierID=Suppliers.SupplierID
+WHERE CategoryName = "Seafood"
+GROUP BY Country
